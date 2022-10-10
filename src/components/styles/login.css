@@ -1,0 +1,66 @@
+.input-types {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+ 
+}
+
+.login-app {
+    background-image: url('/src/components/styles/bg-todo-img.jpg');
+    background-position: right;
+    background-size: cover;
+    top: 0;
+}
+
+.signup-bg {
+
+    background-image: url('/src/components/styles/bg-img-two.png');
+    background-position: top;
+    background-size: contain;
+}
+
+
+
+.user-input {
+    margin-bottom: 10px;
+    padding: 14px 24px;
+    width: 40%;
+    outline: none;
+
+
+}
+
+.btn {
+    padding: 15px 15px;
+    background-color: darkgreen;
+    margin-bottom: 10px;
+    width: 7%;
+    border-radius: 5px soild;
+    outline: none;
+    border: 0px;
+    margin-top: 10px;
+    cursor: pointer;
+
+
+}
+
+.create {
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.create a {
+    text-decoration: none;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: #fff;
+    margin-bottom: 20pxpx;
+}
+
+.create div {
+
+    text-align: center;
+    margin-bottom: 20px;
+    color: #fff;
+
+}
