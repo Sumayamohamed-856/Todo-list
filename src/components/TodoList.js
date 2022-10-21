@@ -1,56 +1,141 @@
-import React, { useState } from 'react';
-import TodoForm from './TodoForm';
-import Todo from './Todo';
-import axios from 'axios';
-
+import React, { useEffect, useState } from "react";
+import TodoForm from "./TodoForm";
+import Todo from "./Todo";
+import axios from "axios";
+import { useNavigate } from "react-router";
 
 function TodoList() {
   const [todos, setTodos] = useState([]);
+  const navigate = useNavigate()
 
-  const addTodo = todo => {
-    if (!todo.text || /^\s*$/.test(todo.text)) {
+  useEffect(() => {
+    getTodos();
+  }, []);
+
+  const addTodo = (todo) => {
+    if (!todo.task || /^\s*$/.test(todo.task)) {
       return;
     }
+    const access_token = window.localStorage.getItem("access_token");
+    const config = {
+      headers: {
+        Authorization: `Bearer ${access_token}`,
+        "Content-Type": "application/json",
+      },
+    };
 
-    // axios.post("https://git.heroku.com/sm-todo-list.git/todos"
-    // ).then(response => {
+    axios
+      .post("http://localhost:5000/todos/", todo, config)
+      .then((response) => {
+        console.log(response);
+        todo = response.data.todo;
+        const newTodos = [todo, ...todos];
+        setTodos(newTodos);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
-    //   console.log("post", response)
+  const getTodos = () => {
+    const access_token = window.localStorage.getItem("access_token");
+    const config = {
+      headers: {
+        Authorization: `Bearer ${access_token}`,
+        "Content-Type": "application/json",
+      },
+    };
+    axios
+      .get("http://localhost:5000/todos/", config)
+      .then((response) => {
+        let todos = response.data;
+        setTodos(todos);
+      })
+      .catch((err) => {
+        if(err.response.status === 401) {
+          window.localStorage.removeItem("access_token")
+          navigate('/')
+        }
+        console.log(err.response.status);
 
-    // }).catch(error => {
-
-    //   console.log("error", error)
-
-    // })
-
-    const newTodos = [todo, ...todos];
-
-    setTodos(newTodos);
-    console.log(...todos);
+      });
   };
 
   const updateTodo = (todoId, newValue) => {
-    if (!newValue.text || /^\s*$/.test(newValue.text)) {
+    if (!newValue.task || /^\s*$/.test(newValue.task)) {
       return;
     }
 
-    setTodos(prev => prev.map(item => (item.id === todoId ? newValue : item)));
+    const access_token = window.localStorage.getItem("access_token");
+    const config = {
+      headers: {
+        Authorization: `Bearer ${access_token}`,
+        "Content-Type": "application/json",
+      },
+    };
+
+    axios
+      .put(
+        `http://localhost:5000/todos/${todoId}`,
+        { id: todoId, task: newValue.task },
+        config
+      )
+      .then((response) => {
+        let todo = response.data.todo;
+        setTodos((prev) =>
+          prev.map((item) => (item.id === todoId ? todo : item))
+        );
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
-  const removeTodo = id => {
-    const removedArr = [...todos].filter(todo => todo.id !== id);
+  const removeTodo = (todoId) => {
+    const access_token = window.localStorage.getItem("access_token");
+    const config = {
+      headers: {
+        Authorization: `Bearer ${access_token}`,
+        "Content-Type": "application/json",
+      },
+    };
 
-    setTodos(removedArr);
+    axios
+      .delete(`http://localhost:5000/todos/${todoId}`, config)
+      .then(() => {
+        const removedArr = [...todos].filter((todo) => todo.id !== todoId);
+
+        setTodos(removedArr);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
-  const completeTodo = id => {
-    let updatedTodos = todos.map(todo => {
-      if (todo.id === id) {
-        todo.isComplete = !todo.isComplete;
-      }
-      return todo;
-    });
-    setTodos(updatedTodos);
+  const completeTodo = (todo) => {
+    const access_token = window.localStorage.getItem("access_token");
+    const config = {
+      headers: {
+        Authorization: `Bearer ${access_token}`,
+        "Content-Type": "application/json",
+      },
+    };
+
+    axios
+      .put(
+        `http://localhost:5000/todos/${todo.id}`,
+        { done:  !todo.done},
+        config
+      )
+      .then((response) => {
+        let todo = response.data.todo;
+        setTodos((prev) =>
+          prev.map((item) => (item.id === todo.id ? todo : item))
+        );
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
