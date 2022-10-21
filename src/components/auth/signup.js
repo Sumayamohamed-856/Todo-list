@@ -25,7 +25,7 @@ function Signup() {
             className='user-input'
             />
 
-           <button className='btn'>Signup</button>
+           <button className='btn'>Submit</button>
 
         </div>
 

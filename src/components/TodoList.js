@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import TodoForm from './TodoForm';
 import Todo from './Todo';
+import axios from 'axios';
 
 
 function TodoList() {
@@ -10,6 +11,17 @@ function TodoList() {
     if (!todo.text || /^\s*$/.test(todo.text)) {
       return;
     }
+
+    // axios.post("https://git.heroku.com/sm-todo-list.git/todos"
+    // ).then(response => {
+
+    //   console.log("post", response)
+
+    // }).catch(error => {
+
+    //   console.log("error", error)
+
+    // })
 
     const newTodos = [todo, ...todos];
 
