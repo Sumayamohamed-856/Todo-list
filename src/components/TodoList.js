@@ -140,7 +140,7 @@ function TodoList() {
 
   return (
     <>
-      <h1>PLAN FOR THE DAY OR FOR THE WEEK</h1>
+      <div className="plan"><h1>PLAN FOR THE DAY OR FOR THE WEEK</h1></div>
       <TodoForm onSubmit={addTodo} />
       <Todo
         todos={todos}
