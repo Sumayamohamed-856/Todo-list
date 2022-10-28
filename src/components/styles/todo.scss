@@ -1,36 +1,43 @@
-* {
+*{
     box-sizing: border-box;
     padding: 0;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
       'Lucida Sans', Arial, sans-serif;
   }
 
+
 .nav-bar {
-    display: flex;
-    justify-content: space-between;
-    margin-left: 30px;
-    margin-right: 35px;
-    margin-top: -10px;
-    background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  margin-left: 30px;
+  margin-right: 35px;
+  margin-top: -10px;
+  background-color: #fff;
  }
 
  .icon-bar {
-    margin-top: 20px;
+    margin-top: 25px;
+    font-size: 2em;
+    color: $purple;
  }
+
+ 
  
  .todo-app {
     display: flex;
     flex-direction: column;
     justify-content: start;
-    width: 1000px;
+    width: 850px;
     min-height: 600px;
-    background: #161a2b;
+    background: $black;
+    background-size: cover;
     text-align: center;
     margin: 128px auto;
     margin-top: 0px;
     margin-bottom: 0px;
     border-radius: 5px;
     padding-bottom: 32px;
+
   }
   
   h1 {
@@ -51,9 +58,9 @@
   .todo-input {
     padding: 14px 32px 14px 16px;
     border-radius: 4px 0 0 4px;
-    border: 2px solid #5d0cff;
+    border: 2px solid $purple;
     outline: none;
-    width: 620px;
+    width: 550px;
     background: transparent;
     color: #fff;
   }
@@ -68,13 +75,13 @@
     border-radius: 0 4px 4px 0;
     cursor: pointer;
     outline: none;
-    background-color: #5d0cff;
+    background-color: $purple;
     color: #fff;
     text-transform: capitalize;
   }
   
   .todo-input.edit {
-    border: 2px solid #149fff;
+    border: 2px solid $blue;
   }
   
   .todo-button.edit {
@@ -99,10 +106,10 @@
     align-items: center;
     margin: 4px auto;
     color: #fff;
-    background-color: #149fff;
+    background-color: $blue;
     padding: 16px;
     border-radius: 5px;
-    width: 720px;
+    width: 650px;
     position: relative;
   }
   

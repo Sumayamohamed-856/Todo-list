@@ -7,40 +7,41 @@
 }
 
 .login-app {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center; 
+    @include loginsignup();
     height: 100vh;
+    max-width: 100%;
     width: 100%;
-    background-image: url('/src/components/styles/bg-todo-img.jpg');
     background-position: right;
     background-size: cover;
     background-repeat: no-repeat;
     top: 0;
+    // background-image: url('/src/components/styles/Images/bg-todo-img.jpg');
+    background-image:  url(./Images/bg-todo-img.jpg);
+
+   
 }
 
 .signup-bg {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center; 
+    
+    @include loginsignup();
     height: 100vh;
-    background-image: url('/src/components/styles/bg-img-two.png');
-    background-position: top;
-    background-size: contain;
+    width: 100%;
+    background-position: right;
+    background-size: cover;
     background-repeat: no-repeat;
+    top: 0;
+    // background-image: url('/src/components/styles/Images/bg-img-two.png');
+    background-image:  url(./Images/bg-img-two.png);
+   
 }
 
 
 
 .user-input {
     margin-bottom: 20px;
-    padding: 15px 24px;
+    padding: 15px 25px;
     width: 500px;
     outline: none;
-
-
 }
 
 .btn {
@@ -67,7 +68,7 @@
     text-decoration: none;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     color: #fff;
-    margin-bottom: 20pxpx;
+    margin-bottom: 20px;
 }
 
 .create div {

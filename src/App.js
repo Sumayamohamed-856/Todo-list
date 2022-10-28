@@ -1,5 +1,5 @@
 import React from 'react';
-import './components/styles/App.css';
+import './components/styles/App.scss';
 import TodoList from './components/TodoList';
 import Pages from './components/pages'
 import Signup from './components/auth/signup';
