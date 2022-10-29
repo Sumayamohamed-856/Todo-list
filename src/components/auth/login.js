@@ -17,7 +17,7 @@ function Login() {
 
 
   const handleSubmit = () => {
-    axios.post('http://localhost:5000/login', {email: email, password: password})
+    axios.post('https://sm-todo-list.herokuapp.com/login', {email: email, password: password})
     .then(response => {
       window.localStorage.setItem('access_token', response.data.access_token);
       navigate("/dashboard");

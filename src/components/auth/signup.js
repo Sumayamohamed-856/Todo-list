@@ -18,7 +18,7 @@ function Signup() {
 
 
   const handleSubmit = () => {
-    axios.post('http://localhost:5000/signup', {email: email, password: password})
+    axios.post('https://sm-todo-list.herokuapp.com/signup', {email: email, password: password})
     .then(response => {
       window.localStorage.setItem('access_token', response.data.access_token);
       navigate("/dashboard");

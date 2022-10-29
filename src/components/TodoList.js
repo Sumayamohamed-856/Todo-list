@@ -25,7 +25,7 @@ function TodoList() {
     };
 
     axios
-      .post("http://localhost:5000/todos/", todo, config)
+      .post("https://sm-todo-list.herokuapp.com/todos/", todo, config)
       .then((response) => {
         console.log(response);
         todo = response.data.todo;
@@ -46,7 +46,7 @@ function TodoList() {
       },
     };
     axios
-      .get("http://localhost:5000/todos/", config)
+      .get("https://sm-todo-list.herokuapp.com/todos/", config)
       .then((response) => {
         let todos = response.data;
         setTodos(todos);
@@ -76,7 +76,7 @@ function TodoList() {
 
     axios
       .put(
-        `http://localhost:5000/todos/${todoId}`,
+        `https://sm-todo-list.herokuapp.com/todos/${todoId}`,
         { id: todoId, task: newValue.task },
         config
       )
@@ -101,7 +101,7 @@ function TodoList() {
     };
 
     axios
-      .delete(`http://localhost:5000/todos/${todoId}`, config)
+      .delete(`https://sm-todo-list.herokuapp.com/todos/${todoId}`, config)
       .then(() => {
         const removedArr = [...todos].filter((todo) => todo.id !== todoId);
 
@@ -123,7 +123,7 @@ function TodoList() {
 
     axios
       .put(
-        `http://localhost:5000/todos/${todo.id}`,
+        `https://sm-todo-list.herokuapp.com/todos/${todo.id}`,
         { done:  !todo.done},
         config
       )
